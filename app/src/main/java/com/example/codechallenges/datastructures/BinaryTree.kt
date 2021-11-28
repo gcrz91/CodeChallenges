@@ -5,3 +5,5 @@ open class BinaryTree(value: Int) {
     var left: BinaryTree? = null
     var right: BinaryTree? = null
 }
+
+open class Level(val root: BinaryTree?, val depth: Int)
