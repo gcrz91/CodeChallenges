@@ -1,20 +1,20 @@
 package com.example.codechallenges.easy
 
 /**
-Find Closest Value in BST
+Find Closest Value in BinaryTree
 
-Write a function that takes in a Binary Search Tree (BST) and a target integer
-value and returns the closest value to that target value contained in the BST.
+Write a function that takes in a Binary Search Tree (BinaryTree) and a target integer
+value and returns the closest value to that target value contained in the BinaryTree.
 
 You can assume that there will only be one closest value.
 
-Each BST node has an integer value, a
+Each BinaryTree node has an integer value, a
 left child node, and a right child node. A node is
-said to be a valid BST node if and only if it satisfies the BST
+said to be a valid BinaryTree node if and only if it satisfies the BinaryTree
 property: its value is strictly greater than the values of every
 node to its left; its value is less than or equal to the values
 of every node to its right; and its children nodes are either valid
-BST nodes themselves or None / null.
+BinaryTree nodes themselves or None / null.
 
 Sample Input
 tree =      10
@@ -30,15 +30,10 @@ Sample Output
 13
  **/
 
+import com.example.codechallenges.datastructures.BinaryTree
 import kotlin.math.abs
 
-open class BST(value: Int) {
-    var value = value
-    var left: BST? = null
-    var right: BST? = null
-}
-
-fun findClosestValueInBst(tree: BST, target: Int): Int {
+fun findClosestValueInBst(tree: BinaryTree, target: Int): Int {
     // Write your code here.
     var minDifference = abs(tree.value - target)
     var closestValue = tree.value
@@ -55,7 +50,7 @@ fun findClosestValueInBst(tree: BST, target: Int): Int {
     return closestValue
 }
 
-fun traverseTree(tree: BST, listOfValues: MutableList<Int>): List<Int> {
+fun traverseTree(tree: BinaryTree, listOfValues: MutableList<Int>): List<Int> {
     if (tree.left != null) {
         listOfValues.add(tree.left!!.value)
         traverseTree(tree.left!!, listOfValues)
@@ -69,15 +64,15 @@ fun traverseTree(tree: BST, listOfValues: MutableList<Int>): List<Int> {
 
 
 fun main() {
-    val bst1 = BST(10)
-    val bst2 = BST(5)
-    val bst3 = BST(15)
-    val bst4 = BST(2)
-    val bst5 = BST(5)
-    val bst6 = BST(13)
-    val bst7 = BST(22)
-    val bst8 = BST(1)
-    val bst9 = BST(14)
+    val bst1 = BinaryTree(10)
+    val bst2 = BinaryTree(5)
+    val bst3 = BinaryTree(15)
+    val bst4 = BinaryTree(2)
+    val bst5 = BinaryTree(5)
+    val bst6 = BinaryTree(13)
+    val bst7 = BinaryTree(22)
+    val bst8 = BinaryTree(1)
+    val bst9 = BinaryTree(14)
     bst1.apply {
         left = bst2
         right = bst3
@@ -98,11 +93,11 @@ fun main() {
 
 // Average: O(log(n)) time | O(log(n)) space
 // Worst: O(n) time | O(n) space
-fun sampleOneFindClosestValueInBst(tree: BST, target: Int): Int {
+fun sampleOneFindClosestValueInBst(tree: BinaryTree, target: Int): Int {
     return sampleOneFindClosestValueInBstHelper(tree, target, tree.value)
 }
 
-fun sampleOneFindClosestValueInBstHelper(tree: BST, target: Int, closest: Int): Int {
+fun sampleOneFindClosestValueInBstHelper(tree: BinaryTree, target: Int, closest: Int): Int {
     var newClosest = closest
 
     if (abs(target - closest) > abs(target - tree.value)) {

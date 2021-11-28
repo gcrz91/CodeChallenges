@@ -1,5 +1,7 @@
 package com.example.codechallenges.easy
 
+import com.example.codechallenges.datastructures.BinaryTree
+
 /**
 Branch Sums
 
@@ -33,12 +35,6 @@ Sample Output
 // 11 == 1 + 3 + 7
 
  **/
-
-open class BinaryTree(value: Int) {
-    var value = value
-    var left: BinaryTree? = null
-    var right: BinaryTree? = null
-}
 
 fun branchSums(root: BinaryTree): List<Int> {
     // Write your code here.
