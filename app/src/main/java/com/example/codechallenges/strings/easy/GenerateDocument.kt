@@ -101,4 +101,6 @@ fun sampleThreeGenerateDocument(characters: String, document: String): Boolean {
 
         characterCounts[character] = characterCounts[character]!! - 1
     }
+
+    return true
 }
