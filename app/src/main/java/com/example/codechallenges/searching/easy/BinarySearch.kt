@@ -28,15 +28,72 @@ Sample Output
 3
  **/
 
-fun binarySearch(array: List<Int>, target: Int): Int {
+private fun binarySearch(array: List<Int>, target: Int): Int {
     // Write your code here.
+    return binarySearchHelper(array, target)
+}
+
+private fun binarySearchHelper(array: List<Int>, target: Int): Int {
+    var left: Int = 0
+    var right: Int = array.lastIndex
+    var middle: Int = (left + right) / 2
+
+    while (left <= right) {
+        val currentValue = array[middle]
+        if (target < currentValue) {
+            right = middle - 1
+        } else if (target > currentValue) {
+            left = middle + 1
+        } else {
+            return middle
+        }
+        middle = (left + right) / 2
+    }
     return -1
 }
 
-fun main() {
+private fun main() {
     println(binarySearch(listOf(0, 1, 21, 33, 45, 45, 61, 71, 72, 73), 33))
 }
 
-fun sampleOneBinarySearch(array: List<Int>, target: Int): Int {
+// O(log(n)) time | O(log(n)) space
+private fun sampleOneBinarySearch(array: List<Int>, target: Int): Int {
+    return sampleOneBinarySearchHelper(array, target, 0, array.lastIndex)
+}
+
+private fun sampleOneBinarySearchHelper(
+    array: List<Int>,
+    target: Int,
+    left: Int,
+    right: Int
+): Int {
+    if (left > right) {
+        return -1
+    }
+    val middle = (left + right) / 2
+    val current = array[middle]
+    return if (target == current) {
+        middle
+    } else if (target < current) {
+        sampleOneBinarySearchHelper(array, target, left, middle - 1)
+    } else {
+        sampleOneBinarySearchHelper(array, target, left + 1, right)
+    }
+}
+
+private fun sampleTwoBinarySearch(array: List<Int>, target: Int): Int {
+    var left = 0
+    var right = array.lastIndex
+    while (left <= right) {
+        val middle = (left + right) / 2
+        val current = array[middle]
+        if (target == current) {
+            return middle
+        } else if (target < current) {
+            right = middle - 1
+        } else {
+            left = middle - 1
+        }
+    }
     return -1
 }
